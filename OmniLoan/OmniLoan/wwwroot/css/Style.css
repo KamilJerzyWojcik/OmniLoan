@@ -1,0 +1,37 @@
+﻿body {
+    padding-top: 5rem;
+}
+
+.starter-template {
+    padding: 3rem 1.5rem;
+    text-align: center;
+}
+
+.start {
+    text-align: center;
+}
+
+.person {
+    text-align: center;
+}
+
+.company {
+    text-align: center;
+}
+
+.adress {
+    border: 2px solid black;
+    padding: 10px;
+    margin-bottom: 5px;
+}
+
+
+div.is-alive {
+
+    text-align: left;
+    padding: 20px;
+}
+#is-alive {
+    margin-left: 20px;
+    margin-top: 6px;
+}
