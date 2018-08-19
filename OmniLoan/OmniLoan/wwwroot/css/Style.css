@@ -25,6 +25,12 @@
     margin-bottom: 5px;
 }
 
+.dept {
+    border: 2px solid green;
+    padding: 10px;
+    margin-bottom: 5px;
+}
+
 
 div.is-alive {
 

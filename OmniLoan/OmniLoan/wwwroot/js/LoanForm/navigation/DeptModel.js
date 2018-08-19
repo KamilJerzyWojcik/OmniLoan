@@ -3,10 +3,38 @@
     var newPage = CreateNewPage();
     newPage = AddForm(newPage);
 
-    newPage = AddFormGroup(newPage, `amount-${name}`); //city-hall
+    newPage = AddFormGroup(newPage, `amount-${name}`);
     AddLabel(newPage, "amount", "Amount: ", `amount-${name}`);
     AddInput(newPage, "number", "amount", `amount-${name}`, `amount-${name}`)
     AddModelToInput(`form div.amount-${name} input.form-control`, deptModel.amount);
+
+    newPage = AddFormGroup(newPage, `capital-${name}`);
+    AddLabel(newPage, "capital", "Capital: ", `capital-${name}`);
+    AddInput(newPage, "number", "capital", `capital-${name}`, `capital-${name}`)
+    AddModelToInput(`form div.capital-${name} input.form-control`, deptModel.capital);
+
+    newPage = AddFormGroup(newPage, `interest-${name}`);
+    AddLabel(newPage, "interest", "Interest: ", `interest-${name}`);
+    AddInput(newPage, "number", "interest", `interest-${name}`, `interest-${name}`)
+    AddModelToInput(`form div.interest-${name} input.form-control`, deptModel.interest);
+
+    newPage = AddFormGroup(newPage, `interest-penalty-${name}`);
+    AddLabel(newPage, "interest-penalty", "Interest penalty: ", `interest-penalty-${name}`);
+    AddInput(newPage, "number", "interest-penalty", `interest-penalty-${name}`, `interest-penalty-${name}`)
+    AddModelToInput(`form div.interest-penalty-${name} input.form-control`, deptModel.interestPenalty);
+
+    newPage = AddFormGroup(newPage, "date-last-update-interest-penalty");
+    AddLabel(newPage, "date-last-update-interest-penalty", "Last Update interest penalty: ", "date-last-update-interest-penalty");
+    AddInput(newPage, "date", "date-datelast-update-interest-penalty", "date-last-update-interest-penalty", "")
+    AddModelToInput("form div.date-last-update-interest-penalty input.form-control", deptModel.dateLastUpdateInterestPenalty, "date");
+
+    newPage = AddFormGroup(newPage, `penalty-type-${name}`);
+    AddSelect(newPage, "interest-penalty-type", `penalty-type-${name}`, ["choose type", "Stopa Lombardowa", "Stopa Referencyjna NBP"])
+
+    newPage = AddFormGroup(newPage, `fees-and-commissions-${name}`);
+    AddLabel(newPage, "fees-and-commissions", "Fees and commissions: ", `fees-and-commissions-${name}`);
+    AddInput(newPage, "number", "interest-fees-and-commissions", `fees-and-commissions-${name}`, `fees-and-commissions-${name}`)
+    AddModelToInput(`form div.fees-and-commissions-${name} input.form-control`, deptModel.interestPenalty);
 
     Page.appendChild(newPage);
 
@@ -109,10 +137,30 @@
             newInput.setAttribute("type", type);
             newInput.setAttribute("step", 0.01);
             newInput.setAttribute("id", id);
+            newInput.setAttribute("min", "0.00");
             newInput.classList.add("form-control");
 
             newFormGroup.appendChild(newInput);
         }
+    }
+
+    function AddSelect(newPage, id, additionalClass, data) {
+
+        var newFormGroup = newPage.querySelector("form div." + additionalClass);
+        var newSelect = document.createElement("select");
+
+        newSelect.classList.add("custom-select");
+        newSelect.setAttribute("id", id);
+
+        for (let i = 0; i < data.length; i++) {
+            let newOption = document.createElement("option");
+            newOption.value = i;
+            newOption.innerText = data[i];
+            newSelect.appendChild(newOption);
+        }
+
+        newFormGroup.appendChild(newSelect);
+
     }
 
     function AddModelToInput(selector, param) {

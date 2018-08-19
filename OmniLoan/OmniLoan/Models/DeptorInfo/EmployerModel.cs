@@ -9,14 +9,14 @@ namespace OmniLoan.Models
 	{
 		public int? ID { get; private set; } = null;
 		public string Name { get; private set; } = null;
-		public AddressModel Adress { get; private set; } = new AddressModel();
+		public AddressModel Address { get; private set; } = new AddressModel();
 		public string NIP { get; private set; } = null;
 		public string REGON { get; private set; } = null;
 
-		public EmployerModel(string name, AddressModel adress, string nip, string regon)
+		public EmployerModel(string name, AddressModel address, string nip, string regon)
 		{
 			Name = name;
-			Adress = adress;
+			Address = address;
 			NIP = nip;
 			REGON = regon;
 		}
@@ -29,9 +29,9 @@ namespace OmniLoan.Models
 			NIP = nip;
 		}
 
-		public void SetDetails(AddressModel adress, string regon)
+		public void SetDetails(AddressModel address, string regon)
 		{
-			Adress = adress;
+			Address = address;
 			REGON = regon;
 		}
 	}

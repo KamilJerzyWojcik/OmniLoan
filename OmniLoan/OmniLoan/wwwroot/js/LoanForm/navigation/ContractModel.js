@@ -21,7 +21,7 @@
 
     newPage = AddFormGroup(newPage, "date-conclusion");
     AddLabel(newPage, "date-conclusion", "Contract date conclusion: ", "date-conclusion");
-    AddInput(newPage, "date", "date-conclusion", "date-conclusion", "Contract number")
+    AddInput(newPage, "date", "date-conclusion", "date-conclusion", "")
     AddModelToInput("form div.date-conclusion input.form-control", contractModel.dateConclusion, "date");
 
     newPage = AddFormGroup(newPage, "date-contract-termination");
@@ -83,8 +83,17 @@
             contractModel.dateConclusion = AddDataToModel("form div.date-conclusion input.form-control");
             contractModel.dateContractTermination = AddDataToModel("form div.date-contract-termination input.form-control");
 
-            contractModel.dept.amount = AddDataToModel("form div.dept form div.amount-dept input.form-control")
+            contractModel.dept.amount = AddDataToModel("form div.dept form div.amount-dept input.form-control");
+            contractModel.dept.capital = AddDataToModel("form div.dept form div.capital-dept input.form-control");
+            contractModel.dept.interest = AddDataToModel("form div.dept form div.interest-dept input.form-control");
+            contractModel.dept.interestPenalty = AddDataToModel("form div.dept form div.interest-penalty-dept input.form-control");
+            contractModel.dept.dateLastUpdateInterestPenalty = AddDataToModel("form div.dept form div.date-last-update-interest-penalty input.form-control");
+            contractModel.dept.feesAndCommissions = AddDataToModel("form div.dept form div.fees-and-commissions-dept input.form-control");
+
+            contractModel.dept.interestPenaltynumber = AddDataToModel("form div.dept form div.penalty-type-dept select", "select");
+
             
+
         });
 
         var form = newPage.querySelector("form");
@@ -185,6 +194,12 @@
         if (type == "checkbox") {
             var data = newPage.querySelector(selector);
             return data.checked;
+        }
+
+        if (type == "select") {
+            var data = newPage.querySelector(selector);
+            console.log(data);
+            return data.options[data.selectedIndex].value;
         }
     }
 

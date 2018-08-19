@@ -17,7 +17,7 @@
 
         if (prop != "isDeptorCompany" && prop != "id") {
 
-            if (isCompany && (prop == "employer" || prop == "deptorPerson")) { continue; }
+            if (isCompany && (prop == "employer")) { continue; }
             if (!isCompany && prop == "deptorCompany") { continue; }
 
             if (prop == "deptorPerson") aChild = AddPerson(dataModel, aChild);
@@ -91,7 +91,10 @@
     }
 
     function AddPerson(dataModel, aChild) {
-        aChild.innerText = "Person";
+        if (dataModel.isDeptorCompany == false) aChild.innerText = "Person";
+        else aChild.innerText = "Owner";
+
+        
         aChild.addEventListener("click", function () {
             var menuButtons = document.querySelectorAll("div.container ul.nav-tabs li");
 
@@ -101,7 +104,16 @@
             }
 
             aChild.classList.add("active");
-            Person(dataModel.deptorPerson);
+            if (dataModel.isDeptorCompany == false) {
+                dataModel.isDeptorCompany = false;
+                dataModel.deptorPerson.isOwner = false;
+                Person(dataModel.deptorPerson);
+            }
+            else {
+                dataModel.deptorCompany.owner.isOwner = true;
+                dataModel.isDeptorCompany = true;
+                Person(dataModel.deptorCompany.owner);
+            }
         });
 
         return aChild;

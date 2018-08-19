@@ -15,7 +15,7 @@ namespace OmniLoan.Models
 		public decimal? InterestPenalty { get; private set; } = null;
 		public DateTime? DateLastUpdateInterestPenalty { get; private set; } = new DateTime();
 		public InterestPenaltyType? TypePenalty { get; private set; } = null;
-		public int? InterestPenaltynumber { get; private set; } = null;
+		public int? InterestPenaltynumber { get; private set; } = 0; //1 -typ1, 2 - typ2
 		public decimal? FeesAndCommissions { get; private set; } = null;
 
 

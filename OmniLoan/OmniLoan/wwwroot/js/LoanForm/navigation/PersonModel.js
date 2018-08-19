@@ -1,60 +1,79 @@
 ﻿function Person(personModel) {
 
     console.log("person: " + JSON.stringify(personModel));
-    //console.log("person");
+    console.log("person");
 
-    if (personModel.isDeptorCompany) personModel.isOwner = true;
+    console.log(personModel.isDeptorCompany);
 
     DeletePage();
     var newPage = CreateNewPage();
 
     newPage = AddForm(newPage);
 
+    if (personModel.isOwner == false) {
 
-    newPage = AddFormGroup(newPage, "first-name");
-    AddLabel(newPage, "first-name", "First Name: ", "first-name");
-    AddInput(newPage, "text", "first-name", "first-name", "First name")
-    AddModelToInput("form div.first-name input.form-control", personModel.firstName);
+        newPage = AddFormGroup(newPage, "first-name");
+        AddLabel(newPage, "first-name", "First Name: ", "first-name");
+        AddInput(newPage, "text", "first-name", "first-name", "First name")
+        AddModelToInput("form div.first-name input.form-control", personModel.firstName);
 
-    newPage = AddFormGroup(newPage, "last-name");
-    AddLabel(newPage, "last-name", "Last Name: ", "last-name");
-    AddInput(newPage, "text", "last-name", "last-name", "Last name")
-    AddModelToInput("form div.last-name input.form-control", personModel.lastName);
+        newPage = AddFormGroup(newPage, "last-name");
+        AddLabel(newPage, "last-name", "Last Name: ", "last-name");
+        AddInput(newPage, "text", "last-name", "last-name", "Last name")
+        AddModelToInput("form div.last-name input.form-control", personModel.lastName);
 
-    newPage = AddFormGroup(newPage, "pesel");
-    AddLabel(newPage, "pesel", "Pesel: ", "pesel");
-    AddInput(newPage, "text", "pesel", "pesel", "Pesel")
-    AddModelToInput("form div.pesel input.form-control", personModel.pesel);
+        newPage = AddFormGroup(newPage, "pesel");
+        AddLabel(newPage, "pesel", "Pesel: ", "pesel");
+        AddInput(newPage, "text", "pesel", "pesel", "Pesel")
+        AddModelToInput("form div.pesel input.form-control", personModel.pesel);
 
-    newPage = AddFormGroup(newPage, "is-alive", "checkbox");
-    AddLabel(newPage, "is-alive", "Is alive?: ", "is-alive", "form-check-label");
-    AddInput(newPage, "checkbox", "is-alive", "is-alive", "")
-    AddModelToInput("form div.is-alive input.form-check-input", personModel.isAlive, "checkbox");
+        newPage = AddFormGroup(newPage, "is-alive", "checkbox");
+        AddLabel(newPage, "is-alive", "Is alive?: ", "is-alive", "form-check-label");
+        AddInput(newPage, "checkbox", "is-alive", "is-alive", "")
+        AddModelToInput("form div.is-alive input.form-check-input", personModel.isAlive, "checkbox");
 
-    newPage = AddFormGroup(newPage, "phone-number1");
-    AddLabel(newPage, "phone-number1", "Phone number 1: ", "phone-number1");
-    AddInput(newPage, "text", "phone-number1", "phone-number1", "Phone number 1")
-    AddModelToInput("form div.phone-number1 input.form-control", personModel.phoneNumber1);
+        newPage = AddFormGroup(newPage, "phone-number1");
+        AddLabel(newPage, "phone-number1", "Phone number 1: ", "phone-number1");
+        AddInput(newPage, "text", "phone-number1", "phone-number1", "Phone number 1")
+        AddModelToInput("form div.phone-number1 input.form-control", personModel.phoneNumber1);
 
-    newPage = AddFormGroup(newPage, "phone-number2");
-    AddLabel(newPage, "phone-number2", "Phone number 2: ", "phone-number2");
-    AddInput(newPage, "text", "phone-number2", "phone-number2", "Phone number 2")
-    AddModelToInput("form div.phone-number2 input.form-control", personModel.phoneNumber2);
+        newPage = AddFormGroup(newPage, "phone-number2");
+        AddLabel(newPage, "phone-number2", "Phone number 2: ", "phone-number2");
+        AddInput(newPage, "text", "phone-number2", "phone-number2", "Phone number 2")
+        AddModelToInput("form div.phone-number2 input.form-control", personModel.phoneNumber2);
 
-    newPage = AddFormGroup(newPage, "phone-number3");
-    AddLabel(newPage, "phone-number3", "Phone number 3: ", "phone-number3");
-    AddInput(newPage, "text", "phone-number3", "phone-number3", "Phone number 3")
-    AddModelToInput("form div.phone-number3 input.form-control", personModel.phoneNumber3);
+        newPage = AddFormGroup(newPage, "phone-number3");
+        AddLabel(newPage, "phone-number3", "Phone number 3: ", "phone-number3");
+        AddInput(newPage, "text", "phone-number3", "phone-number3", "Phone number 3")
+        AddModelToInput("form div.phone-number3 input.form-control", personModel.phoneNumber3);
 
-    AddAddress(personModel.addressRegistered, newPage.querySelector("form"), "person-address-registered");
-    AddAddressText("person-address-registered", "Registered Address");
+        AddAddress(personModel.addressRegistered, newPage.querySelector("form"), "person-address-registered");
+        AddAddressText("person-address-registered", "Registered Address");
 
-    AddAddress(personModel.addressCorrespondence, newPage.querySelector("form"), "person-address-correspondence");
-    AddAddressText("person-address-correspondence", "Correspondence Address");
+        AddAddress(personModel.addressCorrespondence, newPage.querySelector("form"), "person-address-correspondence");
+        AddAddressText("person-address-correspondence", "Correspondence Address");
 
-    AddAddress(personModel.addressAnother, newPage.querySelector("form"), "person-address-another");
-    AddAddressText("person-address-another", "Another Address");
+        AddAddress(personModel.addressAnother, newPage.querySelector("form"), "person-address-another");
+        AddAddressText("person-address-another", "Another Address");
+    }
+    else {
 
+        newPage = AddFormGroup(newPage, "first-name");
+        AddLabel(newPage, "first-name", "First Name: ", "first-name");
+        AddInput(newPage, "text", "first-name", "first-name", "First name")
+        AddModelToInput("form div.first-name input.form-control", personModel.firstName);
+
+        newPage = AddFormGroup(newPage, "last-name");
+        AddLabel(newPage, "last-name", "Last Name: ", "last-name");
+        AddInput(newPage, "text", "last-name", "last-name", "Last name")
+        AddModelToInput("form div.last-name input.form-control", personModel.lastName);
+
+        newPage = AddFormGroup(newPage, "pesel");
+        AddLabel(newPage, "pesel", "Pesel: ", "pesel");
+        AddInput(newPage, "text", "pesel", "pesel", "Pesel")
+        AddModelToInput("form div.pesel input.form-control", personModel.pesel);
+
+    }
     AddButton("person");
 
     var page = document.querySelector("div.page");

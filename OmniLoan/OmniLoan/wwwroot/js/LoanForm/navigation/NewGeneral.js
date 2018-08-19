@@ -1,7 +1,7 @@
 ﻿function NewGeneral(dataModel) {
     console.log("general");
 
-    //console.log(JSON.stringify(dataModel));
+    console.log(JSON.stringify(dataModel));
     DeletePage();
     var newPage = CreateNewPage();
     newPage = AddText(newPage);

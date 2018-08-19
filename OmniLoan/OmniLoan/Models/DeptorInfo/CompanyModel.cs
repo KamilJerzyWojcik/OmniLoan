@@ -17,10 +17,10 @@ namespace OmniLoan.Models
 		public AddressModel AddressCorrespondence { get; private set; } = new AddressModel();
 		public AddressModel AddressCompany { get; private set; } = new AddressModel();
 		public AddressModel AddressCompanyAdditional { get; private set; } = new AddressModel();
-		public AddressModel[] AddressAnother { get; private set; } = new AddressModel[] { };
+		public AddressModel AddressAnother { get; private set; } = new AddressModel();
 		public PersonModel Owner { get; private set; } = new PersonModel();
 
-		public CompanyModel(string name, string nip, string regon, string krs, List<string> phoneNumber, AddressModel addressCorrespondence, AddressModel addressCompany, AddressModel addressCompanyAdditional, AddressModel[] addressAnother, PersonModel owner)
+		public CompanyModel(string name, string nip, string regon, string krs, List<string> phoneNumber, AddressModel addressCorrespondence, AddressModel addressCompany, AddressModel addressCompanyAdditional, AddressModel addressAnother, PersonModel owner)
 		{
 			Name = name;
 			NIP = nip;
@@ -50,7 +50,7 @@ namespace OmniLoan.Models
 			KRS = krs;
 		}
 
-		public void SetAdresses(AddressModel addressCorrespondence, AddressModel addressCompany, AddressModel[] addressAnother, AddressModel addressCompanyAdditional)
+		public void SetAdresses(AddressModel addressCorrespondence, AddressModel addressCompany, AddressModel addressAnother, AddressModel addressCompanyAdditional)
 		{
 			AddressCorrespondence = addressCorrespondence;
 			AddressCompany = addressCompany;
