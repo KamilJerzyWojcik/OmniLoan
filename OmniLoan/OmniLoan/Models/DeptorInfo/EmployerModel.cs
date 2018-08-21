@@ -13,6 +13,11 @@ namespace OmniLoan.Models
 		public string NIP { get; private set; } = null;
 		public string REGON { get; private set; } = null;
 
+		public EmployerModel(string name)
+		{
+			Name = name;
+		}
+
 		public EmployerModel(string name, AddressModel address, string nip, string regon)
 		{
 			Name = name;

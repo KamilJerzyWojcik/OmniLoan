@@ -13,5 +13,10 @@ namespace OmniLoan.Controllers
 		{
 			return Redirect("../LoanForm/Form?#");
 		}
+
+		public IActionResult JsonData()
+		{
+			return View();
+		}
 	}
 }

@@ -1,48 +1,18 @@
 ﻿function General(dataModel) {
 
+    var formHelper = new FormHelper();
+    var htmlHelper = new HtmlHelper();
+    var newPage = document.querySelector("div.page");
+
     AddStartNav();
-    divStart = AddDivStart();
-    AddText(divStart);
+    divStart = htmlHelper.AddDiv(newPage, "start")
+    formHelper.AddHeadToForm(divStart, "h1", "Welcome on form", "none")
+    formHelper.AddHeadToForm(divStart, "h2", "Who is deptor?", "none")
+
     AddButtons(divStart);
 
-
-    function AddText(divStart) {
-        var h1 = document.createElement("h1");
-        h1.innerText = "Welcome on form";
-        var h2 = document.createElement("h2");
-        h2.innerText = "Who is deptor?";
-
-        divStart.appendChild(h1);
-        divStart.appendChild(h2);
-    }
-
-    function AddButtonPerson(divStart) {
-
-        var buttonPerson = document.createElement("a");
-        buttonPerson.classList.add("btn");
-        buttonPerson.classList.add("btn-danger");
-        buttonPerson.classList.add("person");
-        buttonPerson.setAttribute("href", "?#");
-        buttonPerson.innerText = "Person";
-
-        divStart.appendChild(buttonPerson);
-        return buttonPerson;
-    }
-
-    function AddButtonCompany(divStart) {
-
-        var buttonCompany = document.createElement("a");
-        buttonCompany.classList.add("btn");
-        buttonCompany.classList.add("btn-success");
-        buttonCompany.classList.add("company");
-        buttonCompany.setAttribute("href", "#");
-        buttonCompany.innerText = "Company";
-
-        divStart.appendChild(buttonCompany);
-        return buttonCompany;
-    }
-
     function AddStartNav() {
+
         var ulList = document.querySelector("div.container ul");
         var liOldChild = ulList.querySelectorAll("li");
 
@@ -76,31 +46,26 @@
 
     }
 
-    function AddDivStart() {
-        var divPage = document.querySelector("div.page");
-        var divStart = document.createElement("div");
-        divStart.classList.add("start");
-        divPage.appendChild(divStart);
-
-        return divStart;
-    }
-
     function AddButtons(divStart) {
 
-        var buttonPerson = AddButtonPerson(divStart);
-        var buttonCompany = AddButtonCompany(divStart);
+        var personButton = htmlHelper.AddButton("btn-danger", "Person");
+        var companyButton = htmlHelper.AddButton("btn-success", "Company");
 
-        buttonPerson.addEventListener("click", function () {
+        personButton.addEventListener("click", function () {
             dataModel.isDeptorCompany = false;
             NewGeneral(dataModel)
             navigation(dataModel);
         });
 
-        buttonCompany.addEventListener("click", function () {
+        companyButton.addEventListener("click", function () {
             dataModel.isDeptorCompany = true;
             NewGeneral(dataModel)
             navigation(dataModel);
         });
+
+        divStart.appendChild(personButton);
+        divStart.appendChild(companyButton);
+
     }
 
 }

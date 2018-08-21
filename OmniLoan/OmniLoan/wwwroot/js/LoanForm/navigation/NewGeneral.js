@@ -1,12 +1,11 @@
 ﻿function NewGeneral(dataModel) {
-    console.log("general");
 
-    console.log(JSON.stringify(dataModel));
     DeletePage();
     var newPage = CreateNewPage();
     newPage = AddText(newPage);
     newPage = AddBackButton(newPage);
     newPage = AddResetButton(newPage);
+    AddJsonButton(newPage)
     AddNewPage(newPage);
 
 
@@ -19,7 +18,7 @@
     }
 
     function CreateNewPage() {
-        
+
         var page = document.createElement("div");
         page.classList.add("start");
 
@@ -48,7 +47,7 @@
         backButton.classList.add("btn");
         backButton.classList.add("btn-danger");
         backButton.setAttribute("href", "#");
-        backButton.innerText = "Back to choose new deptor";
+        backButton.innerText = "change deptor";
 
         backButton.addEventListener("click", function () {
 
@@ -77,9 +76,42 @@
         return newPage;
     }
 
+    function AddJsonButton(newPage) {
+
+        var backButton = document.createElement("a");
+        backButton.classList.add("btn");
+        backButton.classList.add("btn-primary");
+        backButton.setAttribute("href", "#");
+        backButton.innerText = "get Json";
+
+        backButton.addEventListener("click", function () {
+            SendJson("kamil");
+
+            
+
+        });
+
+        newPage.appendChild(backButton);
+        return newPage;
+    }
+
+
     function AddNewPage(newPage) {
         var page = document.querySelector("div.page");
         page.appendChild(newPage);
     }
 
+    function SendJson(userInfos) {
+
+        var json = JSON.stringify(userInfos);
+
+        $.ajax({
+            type: "Get",
+            contentType: "application/json",
+            url: "/LoanForm/SendForm?data=" + userInfos,
+            dataType: "json",
+            success: function (xhr) { alert("ok"); },
+            error: function (xhr) { alert("error"); }
+        });
+    }
 }

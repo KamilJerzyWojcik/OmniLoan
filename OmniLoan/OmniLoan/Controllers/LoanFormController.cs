@@ -8,7 +8,6 @@ using Newtonsoft.Json.Linq;
 using OmniLoan.Models;
 
 
-// For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace OmniLoan.Controllers
 {
@@ -23,10 +22,15 @@ namespace OmniLoan.Controllers
 		[HttpGet]
 		public IActionResult GetForm()
 		{
-			//AddressModel adres = new AddressModel("kopernika", "12", "2", "12-202", "Wrocław");
-			LoanModel adres = new LoanModel();
+			LoanModel loan = new LoanModel();
 
-			return Json(adres);
+			return Json(loan);
+		}
+
+		public IActionResult SendForm(string data)
+		{ 
+
+			return Content(data);
 		}
 	}
 }

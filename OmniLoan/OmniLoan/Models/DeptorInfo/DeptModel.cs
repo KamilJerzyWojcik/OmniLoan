@@ -20,7 +20,6 @@ namespace OmniLoan.Models
 
 
 
-
 		public DeptModel(decimal amount, decimal capital, decimal interest, decimal interestPenalty, InterestPenaltyType typePenalty, decimal feesAndCommissions)
 		{
 			Amount = amount;
